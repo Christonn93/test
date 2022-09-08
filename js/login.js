@@ -1,5 +1,23 @@
 import { load } from "./dist/localstorage.js";
 
+// Trying to get token from API and set it in the header
+function headers(isJson = true) {
+    const headers = {};
+    const token = load("token");
+
+    if (isJson) {
+     headers["Content-Type"] = "application/json";
+    }
+
+    if (token) {
+     headers["Authorization"] = `Bearer ${token}`;
+    }
+
+    return headers;
+   }
+
+
+
 // Getting current time for local storage
 const currentTime = new Date();
 
@@ -41,22 +59,11 @@ class signIn {
     // API function
     async function connectApi(endpoint) {
      try {
-      function headers(isJson = true) {
-       const headers = {};
-       const token = load("token");
-
-       if (isJson) {
-        headers["Content-Type"] = "application/json";
-       }
-
-       if (token) {
-        headers["Authorization"] = `Bearer ${token}`;
-       }
-
-       return headers;
-      }
-
-      const req = await fetch(apiURL, endpoint, headers());
+      const req = await fetch(apiURL, endpoint, {
+        method: "POST",
+        body: JSON.stringify(data),
+        header: headers(),
+    });
       const res = await req.json();
 
       console.log(res);
