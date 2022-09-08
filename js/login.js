@@ -1,4 +1,4 @@
-import { load } from "./dist/localstorage.js";
+import {store, load, hide} from "./dist/localstorage.js";
 
 // Trying to get token from API and set it in the header
 function headers(isJson = true) {

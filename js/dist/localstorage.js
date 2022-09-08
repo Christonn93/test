@@ -8,7 +8,7 @@ export function load(token){
         const token = localStorage.getItem(token)
         return JSON.parse(token)
     } catch (err) {
-        alert(err)
+        console.error(err)
         if(load(token)){
             return null
         }
