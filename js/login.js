@@ -1,23 +1,5 @@
 import {store, load, hide} from "./dist/localstorage.js";
 
-// Trying to get token from API and set it in the header
-function headers(isJson = true) {
-    const headers = {};
-    const token = load("token");
-
-    if (isJson) {
-     headers["Content-Type"] = "application/json";
-    }
-
-    if (token) {
-     headers["Authorization"] = `Bearer ${token}`;
-    }
-
-    return headers;
-   }
-
-
-
 // Getting current time for local storage
 const currentTime = new Date();
 
@@ -53,29 +35,34 @@ class signIn {
      password: document.querySelector("#password").value,
     };
 
-    // Setting up APi information
-    const apiURL = `https://nf-api.onrender.com`;
+    //Function for headers
+    function headers(isJson = true) {
+        const headers = {}
+        const token = load("token");
+        
+        if (isJson) {
+          headers["Content-Type"] = "application/json"
+        }
+      
+        if (token) {
+          headers["Authorization"] = `Bearer ${token}`;
+        }
+      
+        return headers
+      }
 
-    // API function
-    async function connectApi(endpoint) {
-     try {
-      const req = await fetch(apiURL, endpoint, {
+    // Setting up APi information
+    const apiURL = `https://nf-api.onrender.com/api/v1/social/profile`;
+    fetch(apiURL, {
         method: "POST",
         body: JSON.stringify(data),
-        header: headers(),
-    });
-      const res = await req.json();
+        ...headers
+    })
+    .then((response) => response.json())
+    .then((data) => {
 
-      console.log(res);
-     } catch (error) {}
-    }
-
-    connectApi(`/api/v1/social/profile`);
-    // localStorage.setItem("auth", token);
-    localStorage.setItem("User ID", 1);
-    localStorage.setItem("Username", 1);
-    localStorage.setItem("TimeStamp", currentTime);
-
+    })
+    
     this.form.submit();
     //  console.log(input.value);
    }

@@ -6,7 +6,7 @@ class Auth {
     }
 
     validateAuth(auth){
-        if(auth !== "token"){
+        if(auth !== token){
             window.location.replace("./")
         }else {
             document.querySelector("body").style.display = "block";
