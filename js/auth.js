@@ -1,12 +1,12 @@
 class Auth {
     constructor(){
         document.querySelector("body").style.display = "none";
-        const auth = localStorage.getItem("token");
+        const auth = localStorage.getItem("Auth");
         this.validateAuth(auth);
     }
     
     validateAuth(auth){
-        if(auth !== `${token}`){
+        if(auth !== `${auth}`){
             window.location.replace("./")
         }else {
             document.querySelector("body").style.display = "block";

@@ -1,10 +1,10 @@
-import {store, load, hide} from "./dist/localstorage.js";
+import { store, load, hide } from "./dist/localstorage.js";
 
 // Getting current time for local storage
 const currentTime = new Date();
 
 // Sign in class
-class signIn {
+class SignIn {
  constructor(form, fields) {
   this.form = form;
   this.fields = fields;
@@ -35,34 +35,39 @@ class signIn {
      password: document.querySelector("#password").value,
     };
 
-    //Function for headers
-    function headers(isJson = true) {
-        const headers = {}
-        const token = load("token");
-        
-        if (isJson) {
-          headers["Content-Type"] = "application/json"
-        }
-      
-        if (token) {
-          headers["Authorization"] = `Bearer ${token}`;
-        }
-      
-        return headers
-      }
+    // Base url
+    const endpoint = "";
+    const apiURL = `https://nf-api.onrender.com${endpoint}`;
+
+    fetch(apiURL+`/api/v1/auth/login`, {
+     method: "POST",
+     headers: {
+      "Content-Type": "application/json",
+     },
+    })
+     .then((response) => response.json())
+     .then((data) => {
+     // Storing in localstorage
+     localStorage.setItem("Auth", data.accessToken);
+     return
+     });
+
+
 
     // Setting up APi information
-    const apiURL = `https://nf-api.onrender.com/api/v1/social/profile`;
-    fetch(apiURL, {
-        method: "POST",
-        body: JSON.stringify(data),
-        ...headers
+    fetch(apiURL + `/api/v1/auth/login`, {
+     method: "POST",
+     body: JSON.stringify(data),
+     headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer` + localStorage.getItem("Auth"),
+     },
     })
-    .then((response) => response.json())
-    .then((data) => {
+     .then((response) => response.json())
+     .then((data) => {
+      console.log(data);
+     });
 
-    })
-    
     this.form.submit();
     //  console.log(input.value);
    }
@@ -119,5 +124,5 @@ class signIn {
 const form = document.querySelector("#signInForm");
 if (form) {
  const fields = ["username", "password"];
- const validation = new signIn(form, fields);
+ const validation = new SignIn(form, fields);
 }
