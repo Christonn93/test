@@ -15,21 +15,13 @@ export async function auth(token, name) {
    },
    body: JSON.stringify(),
   });
+
   const response = await request.json();
 
-  
   if (response) {
     alert("You are logged in");
+    console.log(response)
    }
-
-
-  if (token == undefined) {
-   alert("User not registered");
-  } else if (token == null) {
-   alert("User not registered");
-  } else {
-
-  }
  } catch (error) {
   console.log(error);
  }
