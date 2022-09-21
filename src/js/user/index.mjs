@@ -4,16 +4,16 @@ const signIn = formAction.signIn;
 
 export async function signUserIn() {
  try {
-  document.querySelector("form#login").addEventListener("submit", (e) => {
+  document.querySelector("form#login").addEventListener("submit", async (e) => {
    e.preventDefault();
    const form = e.target;
    const email = form.email.value;
    const password = form.pw.value;
 
-   if (email == `[\w\-\.]+@(stud\.)?noroff\.no]`) {
+   if (!email == `[\w\-\.]+@(stud\.)?noroff\.no]`) {
     alert("no valid user");
    } else {
-    signIn(email, password);
+    await signIn(email, password);
    }
   });
  } catch (err) {
