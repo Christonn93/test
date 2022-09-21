@@ -1,0 +1,56 @@
+$theme-main: #08517e;
+$theme-secondary: #ffa500;
+$theme-bg-one: #b4cad8;
+$theme-bg-two: #5285a4;
+
+// Changing bootstrap colors
+$primary:       #ff0000;
+$secondary:     #505059;
+$success:       #0c8410;
+$info:          #0dcaf0;
+$warning:       #ffc107;
+$danger:        #dc3545;
+$light:         #f8f9fa;
+$dark:          #212529;
+$theme:         $theme-main;
+$theme-text:    $theme-secondary;
+$theme-border:  $theme-secondary;
+$theme-btn:     $theme-secondary;
+
+$custom-colors: (
+  "theme": $theme,
+  "theme-bg-main": $theme-bg-one,
+  "theme-bg-sec": $theme-bg-two,
+  "theme-text": $theme-text,
+  "theme-border": $theme-border,
+  "theme-btn": $theme-btn,
+);
+
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+.nav-link {
+    border: 1px solid $theme-border; 
+    border-radius: 0.75rem;
+}
+
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 15px;
+  height: 100vh;
+}
+
+// Including bootstrap
+@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "../../node_modules/bootstrap/scss/functions";
