@@ -32,7 +32,7 @@ export async function signIn(email, password) {
   const token = localStorage.getItem("token");
   const name = localStorage.getItem("username");
 
-  if (!token) {
+  if (token) {
    auth(token, name);
   }
  } catch (err) {

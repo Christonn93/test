@@ -4,7 +4,7 @@ const signIn = formAction.signIn;
 
 export async function signUserIn() {
  try {
-  document.querySelector("form#login").addEventListener("submit", async (e) => {
+  document.querySelector("form#login").addEventListener("submit", (e) => {
    e.preventDefault();
    const form = e.target;
    const email = form.email.value;
@@ -13,7 +13,7 @@ export async function signUserIn() {
    if (!email == `[\w\-\.]+@(stud\.)?noroff\.no]`) {
     alert("no valid user");
    } else {
-    await signIn(email, password);
+    signIn(email, password);
    }
   });
  } catch (err) {
