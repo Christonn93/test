@@ -51,6 +51,11 @@ body {
   height: 100vh;
 }
 
+#username {
+  color: red;
+  font-weight: bolder;
+}
+
 // Including bootstrap
 @import "../../node_modules/bootstrap/scss/bootstrap";
 @import "../../node_modules/bootstrap/scss/functions";

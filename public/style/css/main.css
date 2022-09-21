@@ -11,6 +11,11 @@ body {
   height: 100vh;
 }
 
+#username {
+  color: red;
+  font-weight: bolder;
+}
+
 /*!
  * Bootstrap  v5.2.0 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors

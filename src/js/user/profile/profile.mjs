@@ -1,18 +1,22 @@
 // Importing function factory
-import * as factory from "../utils/factory.mjs";
+import * as factory from "../../utils/factory.mjs";
 const element = factory.createElement;
 
 // Creating function to display user profile
-export function displayProfile(response) {
+function displayProfile() {
 
-alert("user is logged in")
+const name = document.querySelector("#username")
+const nameLocal = localStorage.getItem("username")
+
+name.innerText = nameLocal
 
 
 
 
 
 
-  //  if (response) {
+
+//    if (response) {
 //   const profileInfo = document.querySelector("#profile-info");
 
 //   // Creating profile card with factory function
@@ -36,3 +40,5 @@ alert("user is logged in")
 //   console.log("Something went wrong when loading profile data");
 //  }
 }
+
+displayProfile()

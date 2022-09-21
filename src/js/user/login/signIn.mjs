@@ -1,4 +1,4 @@
-import * as apiVar from "../constant/variables.mjs";
+import * as apiVar from "../../constant/variables.mjs";
 import { auth } from "./auth.mjs";
 
 // Re-declaring variables from import

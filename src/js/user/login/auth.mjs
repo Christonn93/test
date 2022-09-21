@@ -1,5 +1,4 @@
-import * as apiVar from "../constant/variables.mjs";
-import { displayProfile } from "./profile.mjs";
+import * as apiVar from "../../constant/variables.mjs";
 
 // Re-declaring variables from import
 const url = apiVar.baseURL;
