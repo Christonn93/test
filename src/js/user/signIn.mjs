@@ -17,7 +17,7 @@ export async function signIn(email, password) {
   });
   const response = await request.json();
 
-  if (response) {
+  if (response.accessToken) {
    // Creating a shorter const for saving in local storage
    const i = response;
 

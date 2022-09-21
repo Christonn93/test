@@ -18,10 +18,12 @@ export async function auth(token, name) {
 
   const response = await request.json();
 
-  if (response) {
-    alert("You are logged in");
-    console.log(response)
-   }
+  if (!response.ok) {
+   window.location.href = "./profile.html";
+   console.log("You are logged in", response);
+  } else {
+   window.location.href = "./";
+  }
  } catch (error) {
   console.log(error);
  }
