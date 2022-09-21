@@ -10,7 +10,7 @@ export async function signUserIn() {
    const email = form.email.value;
    const password = form.pw.value;
 
-   if (!email == `[\w\-\.]+@(stud\.)?noroff\.no]`) {
+   if (!email == "\w\-\.]+@(stud\.)?noroff\.no") {
     alert("no valid user");
    } else {
     signIn(email, password);
@@ -20,3 +20,6 @@ export async function signUserIn() {
   console.log(err);
  }
 }
+
+
+
