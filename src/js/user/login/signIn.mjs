@@ -5,7 +5,17 @@ import { auth } from "./auth.mjs";
 const url = apiVar.baseURL;
 const login = apiVar.login;
 
-// Register user function
+/**
+ * 
+ * This is the main sign in fetch function, it needs to params that, the params is user inputs in the form,
+ * and its taking the input from the login form, sending it over via the eventlistener.
+ * 
+ * After the eventlistener, and the input is validated it will save items in localstorage for later use.
+ * NB! If the fetch response don't have "accessToken" in the json results, the script don't run and the auth function will not run and will display a message for the user.  
+ * 
+ * @param {*} email The user's email
+ * @param {*} password The user's password
+ */
 export async function signIn(email, password) {
  try {
   const request = await fetch(url + login, {

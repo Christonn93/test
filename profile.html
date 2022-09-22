@@ -14,10 +14,12 @@
     <p>Header</p>
    </div>
   </header>
-  <main>
+  <main id="profile">
    <div class="container-fluid d-flex">
     <div class="container-fluid">
         <h1>Welcome to your profile page <span id="username"></span></h1>
+        <div class="container" id="post-feed"></div>
+        <button type="button" name="logout" id="logout" class="btn btn-outline-danger">Logout</button>
     </div>
    </div>
   </main>
@@ -26,6 +28,7 @@
     <p>Footer</p>
    </div>
   </footer>
-  <script src="./src/js/user/profile/profile.mjs" type="module"></script>
+  <script src="./src/js/main.mjs" type="module" defer></script>
+  <script src="./src/js/user/login/logout.mjs" type="module" defer></script>
  </body>
 </html>
