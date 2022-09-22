@@ -2,15 +2,21 @@
 import * as factory from "../../utils/factory.mjs";
 import { getUserPosts } from "../posts/userFilteredPosts.mjs";
 const element = factory.createElement;
+import { fetchData } from "./fetchProfileData.mjs"; 
 
 // Creating function to display user profile
-export function displayProfile() {
- const name = document.querySelector("#username");
+export async function displayProfile() {
+ const nameElement = document.querySelector("#username");
  const nameLocal = localStorage.getItem("username");
 
- name.innerText = nameLocal;
- 
- getUserPosts()
+ nameElement.innerText = nameLocal;
+
+const token = localStorage.getItem("token")
+const name = localStorage.getItem("username")
+
+ const authUser = await fetchData(token, name);
+
+ getUserPosts(authUser);
 
  //    if (response) {
  //   const profileInfo = document.querySelector("#profile-info");
